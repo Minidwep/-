@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ImgModal": "../../component/ImgModal/ImgModal"
+  },
+  "navigationBarTitleText": "M垃圾分类"
+}

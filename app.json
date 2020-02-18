@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/question/index",
+    "pages/rank/index",
+    "pages/user/index" 
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1dbf96",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },"tabBar": {
+    "color": "#999",
+    "selectedColor": "#ff2d4a",
+    "backgroundColor": "#fafafa",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "识别分类",
+        "iconPath": "icons/shibie.png",
+        "selectedIconPath": "icons/shibie-o.png"
+      },
+      {
+        "pagePath": "pages/question/index",
+        "text": "知识问答",
+        "iconPath": "icons/dati.png",
+        "selectedIconPath": "icons/dati-o.png"
+      },
+      {
+        "pagePath": "pages/rank/index",
+        "text": "排行榜",
+        "iconPath": "icons/paihangbang.png",
+        "selectedIconPath": "icons/paihangbang-o.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的信息",
+        "iconPath": "icons/wode.png",
+        "selectedIconPath": "icons/wode-o.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

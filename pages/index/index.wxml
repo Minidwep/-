@@ -1,0 +1,28 @@
+<!-- pages/index1/index.wxml -->
+<view class="upload_main">
+    <view class="upload_btn" bindtap="handleUploadImg">上传图片</view>
+</view>
+<ImgModal show="{{showImgModal === 1}}" height='80%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
+    <view wx:if="{{showImgContent === 1}}" class='upload_content'>
+        <view class="upload_title">是否识别该图片内容</view>
+        <image class="upload_img" src="{{tempFilePaths}}" mode="widthFix" />
+    </view>
+    <view wx:else class="result_content">
+        <image class="result_img" src="{{tempFilePaths}}" mode="widthFix" />
+        <view class="result_info_wrap">
+            <!-- <view class="result_item" wx:for="{{rusult.list}}">
+                <view class="item_key_word">{{item.keyWord}}</view>
+                <view class="item_type">{{item.type}}</view>
+            </view> -->
+            <view class="result_item">
+                <view class="item_key_word">99.5%为盒子,它是干垃圾</view>
+            </view>
+            <view class="result_item">
+                <view class="item_key_word">99.5%为盒子,它是干垃圾</view>
+            </view>
+            <view class="result_item">
+                <view class="item_key_word">99.5%为盒子,它是干垃圾</view>
+            </view>
+        </view>
+    </view>
+</ImgModal>

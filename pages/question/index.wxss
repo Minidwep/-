@@ -1,0 +1,25 @@
+page {
+  background-color: #fff;
+}
+.question_wrap {
+  padding: 50rpx 20rpx;
+}
+.question_wrap .question_item {
+  background-color: #eee;
+  margin-bottom: 50rpx;
+}
+.question_wrap .question_item .quetion_details {
+  font-size: 34rpx;
+  font-weight: 600;
+  padding: 10rpx;
+}
+.question_wrap .question_item .question_answer {
+  overflow: hidden;
+}
+.question_wrap .question_item .question_answer radio-group radio {
+  float: left;
+  width: 50%;
+  padding-bottom: 10rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}

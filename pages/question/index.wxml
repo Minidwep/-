@@ -1,0 +1,135 @@
+<view class="question_wrap">
+    <view class="question_item">
+        <view class="quetion_details">
+            1.硬纸盒是什么类型的垃圾?
+        </view>
+        <view class="question_answer">
+             <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio">
+                    <text>干垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>湿垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>可回收</text>
+                </radio>
+                <radio class="radio">
+                    <text>有害垃圾</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+
+    <view class="question_item">
+        <view class="quetion_details">
+            2.硬纸盒是什么类型的垃圾?
+        </view>
+        <view class="question_answer">
+             <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio">
+                    <text>干垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>湿垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>可回收</text>
+                </radio>
+                <radio class="radio">
+                    <text>有害垃圾</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+
+    <view class="question_item">
+        <view class="quetion_details">
+            3.硬纸盒是什么类型的垃圾?
+        </view>
+        <view class="question_answer">
+             <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio">
+                    <text>干垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>湿垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>可回收</text>
+                </radio>
+                <radio class="radio">
+                    <text>有害垃圾</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+    
+    <view class="question_item">
+        <view class="quetion_details">
+            3.硬纸盒是什么类型的垃圾?
+        </view>
+        <view class="question_answer">
+             <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio">
+                    <text>干垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>湿垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>可回收</text>
+                </radio>
+                <radio class="radio">
+                    <text>有害垃圾</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+    
+    <view class="question_item">
+        <view class="quetion_details">
+            4.硬纸盒是什么类型的垃圾?
+        </view>
+        <view class="question_answer">
+             <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio">
+                    <text>干垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>湿垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>可回收</text>
+                </radio>
+                <radio class="radio">
+                    <text>有害垃圾</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+    
+    <view class="question_item">
+        <view class="quetion_details">
+            5.硬纸盒是什么类型的垃圾?
+        </view>
+        <view class="question_answer">
+             <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio">
+                    <text>干垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>湿垃圾</text>
+                </radio>
+                <radio class="radio">
+                    <text>可回收</text>
+                </radio>
+                <radio class="radio">
+                    <text>有害垃圾</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+
+
+</view>
