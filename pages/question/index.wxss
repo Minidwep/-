@@ -1,25 +1,84 @@
-page {
-  background-color: #fff;
+.page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #c96043;
 }
-.question_wrap {
-  padding: 50rpx 20rpx;
+.page .paper_wrap {
+  margin-top: 5vw;
+  width: 90%;
+  left: 50%;
+  position: absolute;
+  background-color: #fcf3df;
+  transform: translateX(-50%);
+  border-radius: 10rpx;
 }
-.question_wrap .question_item {
-  background-color: #eee;
-  margin-bottom: 50rpx;
+.page .paper_wrap .user_info_wrap {
+  margin-left: 5vw;
+  margin-top: 10vw;
 }
-.question_wrap .question_item .quetion_details {
-  font-size: 34rpx;
+.page .paper_wrap .user_info_wrap .user_image {
+  display: inline-block;
+}
+.page .paper_wrap .user_info_wrap .user_image image {
+  width: 80rpx;
+}
+.page .paper_wrap .user_info_wrap .user_name {
+  display: inline-block;
+  color: #9f4730;
+}
+.page .paper_wrap .paper_progress_wrap {
+  margin-left: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page .paper_wrap .paper_progress_wrap .paper_progress_cent {
+  flex: 1;
+}
+.page .paper_wrap .paper_progress_wrap .page_progress_num {
+  text-align: center;
+  flex: 1;
+  color: #9f4730;
+}
+.page .paper_wrap .question_info_wrap {
+  text-align: center;
+}
+.page .paper_wrap .question_info_wrap .weui-cells__title {
+  color: #9f4730;
   font-weight: 600;
-  padding: 10rpx;
+  font-size: 32rpx;
 }
-.question_wrap .question_item .question_answer {
-  overflow: hidden;
+.page .paper_wrap .question_answer_wrap {
+  padding: 5vw;
 }
-.question_wrap .question_item .question_answer radio-group radio {
-  float: left;
-  width: 50%;
-  padding-bottom: 10rpx;
-  font-size: 30rpx;
-  font-weight: 600;
+.page .paper_wrap .question_answer_wrap radio-group {
+  background-color: #fcf3df;
+}
+.page .paper_wrap .question_answer_wrap radio-group .answer_item {
+  background-color: #f1dcac;
+  margin-top: 2vw;
+  color: #837e74;
+  text-align: center;
+}
+.page .paper_wrap .question_answer_wrap radio-group .answer_item_focus_true {
+  background-color: #16a03f;
+  margin-top: 2vw;
+  color: #ffffff;
+  text-align: center;
+}
+.page .paper_wrap .question_answer_wrap radio-group .answer_item_focus_false {
+  background-color: #c96043;
+  margin-top: 2vw;
+  color: #ffffff;
+  text-align: center;
+}
+.mask{
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-color:#999;
+  z-index:9999;
+  top:0;
+  left:0;
+  opacity:0.1;
 }

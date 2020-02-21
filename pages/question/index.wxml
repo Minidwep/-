@@ -1,135 +1,41 @@
-<view class="question_wrap">
-    <view class="question_item">
-        <view class="quetion_details">
-            1.硬纸盒是什么类型的垃圾?
+<view class='mask' hidden='{{!maskFlag}}'></view>
+<view class="page" >
+    <view class="paper_wrap">
+        <view class="user_info_wrap">
+            <view class="user_image">
+                  <image src="../../icons/user_img.png" mode="widthFix"/>
+            </view>
+            <view class="user_name">MINIDWEP</view>
         </view>
-        <view class="question_answer">
-             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio">
-                    <text>干垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>湿垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>可回收</text>
-                </radio>
-                <radio class="radio">
-                    <text>有害垃圾</text>
-                </radio>
+        <view class="paper_progress_wrap">
+            <view class="paper_progress_cent">
+                <view class=" weui-progress">
+                    <view class="weui-progress__bar">
+                        <progress percent="{{(index+1)*10}}" stroke-width="6" color="#9f4730" border-radius="10rpx" />
+                    </view>
+                </view>
+            </view>
+            <view class="page_progress_num">进度:{{index+1}}/10</view>
+        </view>
+        <view class="question_info_wrap">
+            <view class="weui-cells__title">
+                <view>第{{index+1}}题</view>
+                <view>{{questions[index].info}}</view>
+            </view>
+        </view>
+        <view class="question_answer_wrap">
+            <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="radioChange">
+                <label class="{{item.corrected == 1?'answer_item_focus_true':item.corrected == 0?'answer_item_focus_false':'answer_item'}} answer_item weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+                    <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+                    <view class="weui-cell__bd">{{item.name}}</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-radio " wx:if="{{item.checked}}">
+                        <icon class="weui-icon-radio" type="success" size="16"></icon>
+                    </view>
+                </label>
             </radio-group>
-        </view>
-    </view>
 
-    <view class="question_item">
-        <view class="quetion_details">
-            2.硬纸盒是什么类型的垃圾?
         </view>
-        <view class="question_answer">
-             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio">
-                    <text>干垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>湿垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>可回收</text>
-                </radio>
-                <radio class="radio">
-                    <text>有害垃圾</text>
-                </radio>
-            </radio-group>
         </view>
     </view>
-
-    <view class="question_item">
-        <view class="quetion_details">
-            3.硬纸盒是什么类型的垃圾?
-        </view>
-        <view class="question_answer">
-             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio">
-                    <text>干垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>湿垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>可回收</text>
-                </radio>
-                <radio class="radio">
-                    <text>有害垃圾</text>
-                </radio>
-            </radio-group>
-        </view>
-    </view>
-    
-    <view class="question_item">
-        <view class="quetion_details">
-            3.硬纸盒是什么类型的垃圾?
-        </view>
-        <view class="question_answer">
-             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio">
-                    <text>干垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>湿垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>可回收</text>
-                </radio>
-                <radio class="radio">
-                    <text>有害垃圾</text>
-                </radio>
-            </radio-group>
-        </view>
-    </view>
-    
-    <view class="question_item">
-        <view class="quetion_details">
-            4.硬纸盒是什么类型的垃圾?
-        </view>
-        <view class="question_answer">
-             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio">
-                    <text>干垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>湿垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>可回收</text>
-                </radio>
-                <radio class="radio">
-                    <text>有害垃圾</text>
-                </radio>
-            </radio-group>
-        </view>
-    </view>
-    
-    <view class="question_item">
-        <view class="quetion_details">
-            5.硬纸盒是什么类型的垃圾?
-        </view>
-        <view class="question_answer">
-             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio">
-                    <text>干垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>湿垃圾</text>
-                </radio>
-                <radio class="radio">
-                    <text>可回收</text>
-                </radio>
-                <radio class="radio">
-                    <text>有害垃圾</text>
-                </radio>
-            </radio-group>
-        </view>
-    </view>
-
-
 </view>

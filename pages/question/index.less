@@ -1,28 +1,87 @@
-page{
-    background-color: #fff;
-}
-.question_wrap{
-    padding: 50rpx 20rpx;
-    .question_item{
-       background-color: #eee;
-        margin-bottom: 50rpx;
-        .quetion_details{
-            font-size: 34rpx;
-            font-weight: 600;
-            padding: 10rpx;
-        }
-        .question_answer{
-            overflow: hidden;
-            radio-group{
-                radio{
-                    float: left;
-                    width: 50%;
-                    padding-bottom: 10rpx;
-                    font-size: 30rpx;
-                    font-weight: 600;
+.page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #c96043;
+
+    .paper_wrap {
+        margin-top: 5vw;
+        width: 90%;
+        left: 50%;
+        position: absolute;
+        background-color: #fcf3df;
+        transform: translateX(-50%);
+        border-radius: 10rpx;
+
+        .user_info_wrap {
+            margin-left: 5vw;
+            margin-top: 10vw;
+            .user_image {
+                display: inline-block;
+                image {
+                    width: 80rpx;   
                 }
             }
+            .user_name {
+                display: inline-block;
+                color: #9f4730;
+            }
+        }
+
+        .paper_progress_wrap {
+            margin-left: 5vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .paper_progress_cent {
+                flex: 1;
+            }
+
+            .page_progress_num {
+                text-align: center;
+                flex: 1;
+                color: #9f4730;
+            }
+
+        }
+
+        .question_info_wrap {
+            text-align: center;
+
+            .weui-cells__title {
+                color: #9f4730;
+                font-weight: 600;
+                font-size: 32rpx;
+            }
+
+        }
+
+        .question_answer_wrap {
+            padding: 5vw;
+
+            radio-group {
+                background-color: #fcf3df;
+
+                .answer_item {
+                    background-color: #f1dcac;
+                    margin-top: 2vw;
+                    color: #837e74;
+                    text-align: center;
+                }
+                .answer_item_focus_true{
+                    background-color: #16a03f;
+                    margin-top: 2vw;
+                    color: #ffffff;
+                    text-align: center;
+                }
+                .answer_item_focus_false{
+                    background-color: #c96043;
+                    margin-top: 2vw;
+                    color: #ffffff;
+                    text-align: center;
+                }
+            }
+
         }
     }
-    
 }
