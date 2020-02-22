@@ -2,8 +2,8 @@
 <view class="upload_main">
     <view class="upload_btn" bindtap="handleUploadImg">上传图片</view>
 </view>
-<ImgModal show="{{showImgModal === 1}}" height='80%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
-    <view wx:if="{{showImgContent === 1}}" class='upload_content'>
+<ImgModal show="{{showImgModal}}" height='80%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
+    <view wx:if="{{showImgContent}}" class='upload_content'>
         <view class="upload_title">是否识别该图片内容</view>
         <image class="upload_img" src="{{tempFilePaths}}" mode="widthFix" />
     </view>

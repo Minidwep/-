@@ -1,4 +1,12 @@
 // pages/index1/index.js
+import {
+  request ,uploadFile
+} from "../../request/index";
+
+import {
+  showToast,showModal, chooseImage
+} from "../../utils/asyncWx";
+import regeneratorRuntime from '../../lib/runtime';
 Page({
 
   /**
@@ -6,8 +14,8 @@ Page({
    */
   data: {
     tempFilePaths:'',
-    showImgModal: 0,
-    showImgContent:1,
+    showImgModal: false,
+    showImgContent:true,
     rusult:{
       list:[{
         keyWord:'玉米棒',
@@ -22,46 +30,68 @@ Page({
         keyWord:'电池',
         type:'有害垃圾'
       }]
-    }
+    },
+    isUploaded:false
   },
-
+  params:{
+    url: '',
+    filePath: '',
+    name: '',
+    formData: {
+      'user': 'test'
+    },
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-  handleUploadImg(){
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: (res)=> {
-        // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths);
-        this.setData({
-          tempFilePaths,
-          showImgModal:1,
-        })
-      }
+  async handleUploadImg(){
+    let res = await chooseImage({count:9});
+    let tempFilePaths = res.tempFilePaths
+    this.setData({
+      tempFilePaths,
+      showImgModal:true,
     })
   },
   modalCancel(){
     // 取消
     this.setData({
-      showImgContent:1
+      showImgContent:true
     })
     console.log("取消上传");
   },
-  modalConfirm(){
+  async modalConfirm(){
     console.log("立刻上传");
-    // 1上传
-    // 2上传后返回后台数据 加载动画
-    // 3加载完成 填装数据
-    this.setData({
-      showImgContent:0
-    })
+    let {isUploaded} = this.data;
+    if(!isUploaded){
+      this.params={
+        url:"/fileUpload",
+        filePath:this.data.tempFilePaths[0],
+        name: 'file',
+        formData: {
+          'user': 'test'
+        }
+      }
+      let result = await uploadFile(this.params);
+      
+      if(result.statusCode == 500){
+        isUploaded = !isUploaded;
+      }
+      this.setData({
+        isUploaded,
+        showImgContent:false
+      })
+    } else {
+      console.log("取消");
+      this.setData({
+        showImgModal: false,
+        isUploaded:!isUploaded,
+        showImgContent:true
+      })
+    }
+    
 
   },
 

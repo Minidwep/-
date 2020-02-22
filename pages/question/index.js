@@ -32,6 +32,7 @@ Page({
    
 
   },
+  // 加载数据
   async getTestPaper() {
     const res = await request({
       url: "/question/getTestPaper"
@@ -39,9 +40,15 @@ Page({
     this.setData({
       questions: res.data.extend.questions
     });
-    console.log(this.data.questions);
-
   },
+  // 单选框改变事件
+  // 1.获取被选择按钮
+  // 2.判断用户是否答对当前题目
+  // 3.提示用户反馈信息(答案正确 or 答案错误)
+  // 4.回写当前单选框信息到页面渲染
+  // 5.延时1.5s (自定义mask+反馈延时)
+  // 6.判断是否为最后一个题目 如果是 显示成绩
+  // 7.重置单选框状态 并且题目号+1
   async radioChange(e) {
     // 用户点击的单选框的值
     let checked = e.detail.value;
@@ -66,16 +73,13 @@ Page({
         radioItems[i].corrected =2;
       }
   }
-
-
-
     this.setData({
       radioItems,
       correct,
       questions,
       maskFlag:true
     });
-    console.log(this.data.radioItems);
+
     if(index == 9){
      let result = await showModal({title:"您的成绩为",content:""+(correct+1)*10,cancelText:"返回", confirmText:"再来一次"})
       if(result.confirm){
@@ -103,10 +107,9 @@ Page({
     }
         
   },
+  // 加载新数据
   async getOrtherPaper(){
     this.getTestPaper();
-    let {correct,index,radioItems} = this.data;
-
     let radioItemsInit= [
       {name: '干垃圾', value: '0',corrected :2,checked:false},
       {name: '湿垃圾', value: '1',corrected :2,checked:false},

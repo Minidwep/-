@@ -1,4 +1,9 @@
 /* pages/index1/index.wxss */
+page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f1dcac;
+}
 .upload_main {
   position: relative;
 }
@@ -9,8 +14,8 @@
   margin-top: 40vh;
   font-size: 40rpx;
   font-weight: 600;
-  color: #1dbf96;
-  border: 1rpx solid #1dbf96;
+  color: #837e74;
+  border: 1rpx solid currentColor;
   padding: 20rpx 100rpx;
 }
 .upload_content {

@@ -32,7 +32,6 @@ export const showModal = ({
             confirmColor: '#3CC51F',
             success: (result) => {
                 resolve(result);
-             
             },
             fail: (error)=>{
                 reject(error);
@@ -41,4 +40,30 @@ export const showModal = ({
           });
     })
 }
+
+/* promise 形式的 chooseImage */
+export const chooseImage = ({
+    count
+}) => {
+    return new Promise((resolve, reject) => {
+        wx.chooseImage({
+            count: count,
+            sizeType: ['original','compressed'],
+            sourceType: ['album','camera'],
+            success: (result)=>{
+                resolve(result);
+            },
+            fail: (error)=>{
+                reject(error);
+            },
+            complete: ()=>{}
+        });
+
+    })
+}
+
+
+     
+
+
 

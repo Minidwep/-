@@ -1,4 +1,5 @@
 let ajaxTimes=0;
+const baseUrl ="http://localhost:8080";
 export const request=(params)=>{
     ajaxTimes++;
     // 显示加载中
@@ -8,7 +9,6 @@ export const request=(params)=>{
       });
      
     // 定义功能的url
-    const baseUrl ="http://localhost:8080";
     console.log(params);
     
     return new Promise((resolve,reject)=>{
@@ -31,4 +31,29 @@ export const request=(params)=>{
         });
           
     });
+}
+
+/* promise 形式的 uploadFile */
+export const uploadFile = (params) => {
+    wx.showLoading({
+        title: '上传中,请稍后',
+        mask:true
+      });
+      console.log(params);
+    return new Promise((resolve, reject) => {
+      
+        wx.uploadFile({
+            ...params,
+            url: baseUrl+params.url, //仅为示例，非真实的接口地址
+            success (result){
+                resolve(result);
+            },
+            fail(error){
+                reject(error);
+            },
+            complete:()=>{
+                wx.hideLoading();
+            }
+        })
+    })
 }
