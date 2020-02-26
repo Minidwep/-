@@ -16,8 +16,9 @@
     flex-direction: column;
     width: 90%;
     /* height: 80%; */
-    background-color: #fff;
+    background-color: #fcf3df;
     border-radius: 10rpx;
+
   }
   
   .modal-btn-wrapper{

@@ -70,6 +70,13 @@
 					"pathName": "pages/question/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "反馈",
+					"pathName": "pages/feedback/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -90,7 +90,6 @@ Page({
     } else {
         //延时显示下一个题
     setTimeout(()=> {
-    
         radioItems.forEach(element => {
           element.checked =false;
           element.corrected =2;
@@ -119,7 +118,8 @@ Page({
     this.setData({
       correct:0,
       index:0,
-      radioItems:radioItemsInit
+      radioItems:radioItemsInit,
+      maskFlag:false
     })
   },
   /**

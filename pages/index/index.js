@@ -16,21 +16,8 @@ Page({
     tempFilePaths:'',
     showImgModal: false,
     showImgContent:true,
-    rusult:{
-      list:[{
-        keyWord:'玉米棒',
-        type:'干垃圾'
-      },{
-        keyWord:'玉米粒',
-        type:'湿垃圾'
-      },{
-        keyWord:'塑料袋',
-        type:'可回收'
-      },{
-        keyWord:'电池',
-        type:'有害垃圾'
-      }]
-    },
+    rubbishList:[],
+    resultList:[],
     isUploaded:false
   },
   params:{
@@ -75,13 +62,31 @@ Page({
         }
       }
       let result = await uploadFile(this.params);
-      
-      if(result.statusCode == 500){
-        isUploaded = !isUploaded;
-      }
+      let rubbishResult = JSON.parse(result.data);
+      console.log(rubbishResult);
+      let {rubbishes,resultList} = rubbishResult.extend;
+      rubbishes.forEach(element => {
+        switch (element.type) {
+          case 0:
+            element.type = "干垃圾";
+              break;
+          case 1:
+            element.type = "湿垃圾";
+               break;
+          case 2:
+            element.type = "可回收垃圾";
+               break;
+          case 3:
+            element.type = "有害垃圾";
+               break;
+        } 
+        element.score = Math.ceil(element.score*100);
+      });
       this.setData({
-        isUploaded,
-        showImgContent:false
+        isUploaded:!isUploaded,
+        showImgContent:false,
+        rubbishList:rubbishes,
+        resultList
       })
     } else {
       console.log("取消");
@@ -94,7 +99,16 @@ Page({
     
 
   },
-
+  handleImgFeedback(e){
+    wx.navigateTo({
+      url: '../feedback/index?resultList='+JSON.stringify(this.data.resultList),
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

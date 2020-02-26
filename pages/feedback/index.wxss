@@ -1,0 +1,3 @@
+/* pages/feedback/index.wxss */
+.weui-navigation-bar{position:relative;}
+.weui-navigation-bar__inner{position:absolute;}

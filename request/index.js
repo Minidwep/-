@@ -26,7 +26,6 @@ export const request=(params)=>{
             if(ajaxTimes === 0) {
                 wx.hideLoading();
             }
-         
            }
         });
           
