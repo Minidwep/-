@@ -1,4 +1,5 @@
 // pages/index1/index.js
+import regeneratorRuntime from '../../lib/runtime';
 import {
   request ,uploadFile
 } from "../../request/index";
@@ -6,7 +7,7 @@ import {
 import {
   showToast,showModal, chooseImage
 } from "../../utils/asyncWx";
-import regeneratorRuntime from '../../lib/runtime';
+
 Page({
 
   /**
@@ -21,12 +22,12 @@ Page({
     isUploaded:false
   },
   params:{
-    url: '',
-    filePath: '',
-    name: '',
+    url:"/fileUpload",
+    filePath:'',
+    name: 'file',
     formData: {
       'user': 'test'
-    },
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -53,19 +54,12 @@ Page({
     console.log("立刻上传");
     let {isUploaded} = this.data;
     if(!isUploaded){
-      this.params={
-        url:"/fileUpload",
-        filePath:this.data.tempFilePaths[0],
-        name: 'file',
-        formData: {
-          'user': 'test'
-        }
-      }
+      this.params.filePath=this.data.tempFilePaths[0];
       let result = await uploadFile(this.params);
       let rubbishResult = JSON.parse(result.data);
       console.log(rubbishResult);
-      let {rubbishes,resultList} = rubbishResult.extend;
-      rubbishes.forEach(element => {
+      let {rubbishList,resultList} = rubbishResult.extend;
+      rubbishList.forEach(element => {
         switch (element.type) {
           case 0:
             element.type = "干垃圾";
@@ -85,7 +79,7 @@ Page({
       this.setData({
         isUploaded:!isUploaded,
         showImgContent:false,
-        rubbishList:rubbishes,
+        rubbishList:rubbishList,
         resultList
       })
     } else {
@@ -103,7 +97,6 @@ Page({
     wx.navigateTo({
       url: '../feedback/index?resultList='+JSON.stringify(this.data.resultList),
       success: (result)=>{
-        
       },
       fail: ()=>{},
       complete: ()=>{}

@@ -1,11 +1,16 @@
 // pages/feedback/index.js
+import regeneratorRuntime from '../../lib/runtime';
+import {
+  request 
+} from "../../request/index";
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-        radioItems:[
+      resultList:[
             {score:"0.208986",root:"商品-食物",keyword:"黄河鲤鱼",value: '0', checked: true },
             {score:"0.189116",root:"商品-食物",keyword:"食物",value: '1'},
             {score:"0.143195",root:"商品-其他",keyword:"菜肴",value: '2'},
@@ -17,9 +22,19 @@ Page({
         {name:"可回收垃圾",type:"2",value: '2' },
         {name:"有害垃圾",type:"3",value: '3' },
         
-  ],
-    
+      ],
+      feedParam:{
+        resultChecked:0,
+        rubbishChecked:0
+      },
+      
+      
   },
+  params:{
+    url: '/imgFeedback',
+    data: '123',
+  },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -29,31 +44,39 @@ Page({
     // console.log(resultList);
   },
   resultItemRadioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
-
-    var radioItems = this.data.radioItems;
-    for (var i = 0, len = radioItems.length; i < len; ++i) {
-        radioItems[i].checked = radioItems[i].value == e.detail.value;
-    }
-
+    let {feedParam,resultList} = this.data;
+    resultList.forEach(element => {
+      element.checked = element.value == e.detail.value;
+    });
+    feedParam.resultChecked = resultList[e.detail.value].keyword;
     this.setData({
-        radioItems: radioItems
+      resultList,
+      feedParam
     });
   },
 
   rubbishItemRadioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
-
-    var rubbishList = this.data.rubbishList;
-    for (var i = 0, len = rubbishList.length; i < len; ++i) {
-        rubbishList[i].checked = rubbishList[i].value == e.detail.value;
-    }
-
+    let {feedParam,rubbishList} = this.data;
+    rubbishList.forEach(element => {
+      element.checked = element.value == e.detail.value;
+    });
+    feedParam.rubbishChecked = e.detail.value;
     this.setData({
-        rubbishList: rubbishList
+        rubbishList,
+        feedParam
     });
   },
+  async handleImgFeedback(){
+    let {feedParam} = this.data;
+    this.params.data=feedParam;
+    let res =await request(this.params);
+    if(res.data.code == 100){
+      wx.navigateTo({
+        url: '../msgSuccess/index',
+      });
 
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
