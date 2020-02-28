@@ -12,15 +12,22 @@
         transform: translateX(-50%);
         border-radius: 10rpx;
         height: 80vh;
+
         .user_info_wrap {
             margin-left: 5vw;
             margin-top: 10vw;
+
             .user_image {
                 display: inline-block;
-                image {
-                    width: 80rpx;   
+
+                .user_image_data {
+                    width: 50rpx;
+                    height: 50rpx;
+                    overflow:hidden;  
+                    border-radius: 50%;
                 }
             }
+
             .user_name {
                 display: inline-block;
                 color: #9f4730;
@@ -68,13 +75,15 @@
                     color: #837e74;
                     text-align: center;
                 }
-                .answer_item_focus_true{
+
+                .answer_item_focus_true {
                     background-color: #16a03f;
                     margin-top: 2vw;
                     color: #ffffff;
                     text-align: center;
                 }
-                .answer_item_focus_false{
+
+                .answer_item_focus_false {
                     background-color: #c96043;
                     margin-top: 2vw;
                     color: #ffffff;

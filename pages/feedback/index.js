@@ -10,12 +10,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-      resultList:[
-            {score:"0.208986",root:"商品-食物",keyword:"黄河鲤鱼",value: '0', checked: true },
-            {score:"0.189116",root:"商品-食物",keyword:"食物",value: '1'},
-            {score:"0.143195",root:"商品-其他",keyword:"菜肴",value: '2'},
-            {score:"0.074472",root:"商品-食物",keyword:"糖醋黄鱼",value: '3'}
-      ],
+      // resultList:[
+      //       {score:"0.208986",root:"商品-食物",keyword:"黄河鲤鱼",value: '0', checked: true },
+      //       {score:"0.189116",root:"商品-食物",keyword:"食物",value: '1'},
+      //       {score:"0.143195",root:"商品-其他",keyword:"菜肴",value: '2'},
+      //       {score:"0.074472",root:"商品-食物",keyword:"糖醋黄鱼",value: '3'}
+      // ],
       rubbishList:[
         {name:"干垃圾",type:"0",value: '0', checked: true },
         {name:"湿垃圾",type:"1",value: '1' },
@@ -24,15 +24,15 @@ Page({
         
       ],
       feedParam:{
-        resultChecked:0,
+        resultChecked:'',
         rubbishChecked:0
       },
       
       
   },
   params:{
-    url: '/imgFeedback',
-    data: '123',
+    url: '/feedback',
+    data: ''
   },
   
 
@@ -40,8 +40,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let resultList= JSON.parse(options.resultList);
-    // console.log(resultList);
+    let resultList= JSON.parse(options.resultList);
+    resultList.forEach((element,index) => {
+      element.value=index;
+    });
+    resultList.splice(4, 1);
+    this.setData({
+      resultList
+    })
+    console.log(resultList);
   },
   resultItemRadioChange: function (e) {
     let {feedParam,resultList} = this.data;

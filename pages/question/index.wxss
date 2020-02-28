@@ -20,8 +20,11 @@
 .page .paper_wrap .user_info_wrap .user_image {
   display: inline-block;
 }
-.page .paper_wrap .user_info_wrap .user_image image {
-  width: 80rpx;
+.page .paper_wrap .user_info_wrap .user_image .user_image_data {
+  width: 50rpx;
+  height: 50rpx;
+  overflow: hidden;
+  border-radius: 50%;
 }
 .page .paper_wrap .user_info_wrap .user_name {
   display: inline-block;

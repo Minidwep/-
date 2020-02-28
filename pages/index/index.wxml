@@ -5,9 +5,86 @@
     </view>
     <view class="search_input_box">
         <view class="search_item">
-            <input class="input_text" maxlength="10" placeholder="" />
-            <view class="iconfont icon-sousuo"></view>
+            <input class="input_text"  type="text" confirm-type="search" bindconfirm="handleSearchKeyWord" maxlength="10" placeholder=""  bindinput='dataSearchInput'/>
+            <view class="iconfont icon-sousuo"bindtap="handleSearchKeyWord"  ></view>
             <view class="iconfont icon-tupian" bindtap="handleUploadImg"></view>
+                
+            <view class="weui-demo-dialog {{istrueKeyWord ? 'weui-demo-dialog_show' : ''}}">
+                <view class="weui-dialog__wrp" bindtap="closeKeywordDialog">
+                    <view class="weui-dialog" catchtap="stopKeywordEvent">
+                        <view class="weui-dialog__hd">
+                            <view class="weui-dialog__title">分类结果</view>
+                        </view>
+                        <view class="weui-dialog__bd">
+                            <image class="weui-article__img" src="../../img/rubbishSort_logo.png" mode="widthFix" />
+                            <view class="weui-dialog_text">
+                                您查询的
+                            </view>
+                            <view class="weui-dialog_text">
+                                {{searchInputValue}}
+                            </view>
+                            <view class="weui-dialog_text">
+                                是
+                            </view>
+                            <view class="weui-dialog_text">
+                                {{rubbishKeyResult.type ==null ? "没有查询到结果":''}}
+                                {{rubbishKeyResult.type =='0' ? '干垃圾':''}}
+                                {{rubbishKeyResult.type =='1' ? '干垃圾':''}}
+                                {{rubbishKeyResult.type =='2' ? '干垃圾':''}}
+                                {{rubbishKeyResult.type =='3' ? '干垃圾':''}}
+                            </view>
+                            <view class="weui-dialog_text">
+                                 {{rubbishKeyResult.type ==null ? "请反馈给我们吧":''}}
+                            </view>
+                            <view wx:if="{{rubbishKeyResult != null}}">
+                                <view>如果对结果有疑问,请反馈给我们哦</view>
+                                <view>我们会认真审核滴</view>
+                            </view>
+                        </view>
+                        <view class="weui-dialog__ft">
+                            <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="openKeyFeedbackDialog">反馈</view>
+                            <view class="weui-dialog__btn" bindtap="closeKeywordDialog">确定</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-demo-dialog {{istrueKeyFeedback ? 'weui-demo-dialog_show' : ''}}">
+                <view class="weui-dialog__wrp" bindtap="closeKeyFeedbackDialog">
+                    <view class="weui-dialog" catchtap="stopEvent">
+                        <view class="weui-dialog__hd">
+                            <view class="weui-dialog__title">分类结果</view>
+                        </view>
+                        <view class="weui-dialog__bd">
+                            <image class="weui-article__img" src="../../img/rubbishSort_logo.png" mode="widthFix" />
+                            <view class="weui-cells weui-cells_after-title">
+                                <view class="weui-cells__title">您输入的是</view>
+                                <view class="weui-cell ">
+                                    <view class="weui-cell__bd">
+                                        <input class="weui-input" value="{{searchInputValue}}" />
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="weui-cells__title">选择垃圾分类信息</view>
+                            <view class="weui-cells weui-cells_after-title">
+                                <radio-group bindchange="rubbishItemRadioChange">
+                                <label class="weui-cell weui-check__label" wx:for="{{rubbishListRadio}}" wx:key="value">
+                                    <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+                                    <view class="weui-cell__bd">{{item.name}}</view>
+                                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                    <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                                    </view>
+                                </label>
+                                </radio-group>
+                            </view>
+                        </view>
+                        <view class="weui-dialog__ft">
+                            <view class="weui-dialog__btn" bindtap="handleKeyFeedback">确定</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
         </view>
     </view>
     <view class="bolck"> 
@@ -24,11 +101,15 @@
     <view wx:else class="result_content">
         <image class="result_img" src="{{tempFilePaths}}" mode="widthFix" />
         <view class="result_info_wrap">
+            <view class="result_null_wrap" wx:if="{{rubbishList.length == 0}}">
+                <view class="result_null_text">没有识别出该图片中的信息</view>
+            </view>
             <view class="result_item" wx:for="{{rubbishList}}" wx:key="score">
                 <view class="item_key_word">有{{item.score}}%的概率为{{item.type}} 关键字[{{item.rubName}}]</view>
             </view>
             <view class="result_feedback_wrap">
-                <view class="feedback_text" >没有想要的答案?</view>
+                <view class="feedback_text"  wx:if="{{rubbishList.length != 0}}">没有想要的答案?</view>
+                <view class="feedback_text" wx:else> 帮忙反馈一下吧! </view>
                 <view class="feedback_btn" >
                     <view class="btn_text" bindtap="handleImgFeedback">反馈该信息</view>
                     <view class="btn_bolck"></view>

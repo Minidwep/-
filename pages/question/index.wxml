@@ -3,9 +3,11 @@
     <view class="paper_wrap">
         <view class="user_info_wrap">
             <view class="user_image">
-                  <image src="../../icons/user_img.png" mode="widthFix"/>
+                  <!-- <image src="../../icons/user_img.png" mode="widthFix"/> -->
+
+                <view class="user_image_data"><open-data class="user_image_data" type="userAvatarUrl"></open-data></view>
             </view>
-            <view class="user_name">MINIDWEP</view>
+            <view class="user_name"><open-data type="userNickName"></open-data></view>
         </view>
         <view class="paper_progress_wrap">
             <view class="paper_progress_cent">
