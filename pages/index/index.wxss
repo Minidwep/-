@@ -8,6 +8,12 @@
   visibility: visible;
   opacity: 1;
 }
+.weui-article__img {
+  width: 75%;
+}
+.weui-text_important {
+  color: #c96043;
+}
 page {
   width: 100vw;
   height: 100vh;

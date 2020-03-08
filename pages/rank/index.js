@@ -1,18 +1,45 @@
 // pages/rank/index.js
+
+// pages/question/index.js
+import {
+  request
+} from "../../request/index";
+
+import regeneratorRuntime from '../../lib/runtime';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    rankList:''
 
+  },
+  rankParams:{
+    url: '/rank',
+    header: {'content-type':'application/json'},
+    method: 'GET',
+    dataType: 'json',
+    responseType: 'text',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getRank();
 
+  },
+  async getRank(){
+    let  res = await request(this.rankParams)
+    console.log(res);
+    if(res.data.code == 100){
+      let {rankList} = res.data.extend;
+      this.setData({
+        rankList
+      })
+    }
+    
   },
 
   /**

@@ -21,7 +21,7 @@ Page({
     showImgContent:true,
     rubbishList:[],
     resultList:[],
-    isUploaded:false,
+    buttonStatus:0,
     istrueKeyWord:false,
     istrueKeyFeedback:false,
     rubbishListRadio:[
@@ -70,14 +70,23 @@ Page({
   modalCancel(){
     // 取消
     this.setData({
-      showImgContent:true
+      showImgContent:true,
+      buttonStatus:0
     })
     console.log("取消上传");
   },
   async modalConfirm(){
     console.log("立刻上传");
-    let {isUploaded} = this.data;
-    if(!isUploaded){
+    let {buttonStatus} = this.data;
+    
+    if(buttonStatus == 0){
+      console.log("按钮信息"+buttonStatus)
+      console.log("按钮信息0,功能上传")
+      buttonStatus = 1;
+      console.log("按钮信息变成1,功能将变为为关闭"+buttonStatus)
+      this.setData({
+        buttonStatus
+      })
       this.uploadParams.filePath=this.data.tempFilePaths[0];
       let result = await uploadFile(this.uploadParams);
       let rubbishResult = JSON.parse(result.data);
@@ -101,20 +110,27 @@ Page({
         element.score = Math.ceil(element.score*100);
       });
       this.setData({
-        isUploaded:!isUploaded,
         showImgContent:false,
         rubbishList:rubbishList,
         resultList
       })
-    } else {
+    } else{
+      console.log("按钮信息"+buttonStatus+"关闭")
+      console.log();
+      buttonStatus =0;
+      console.log("按钮信息变成0,功能将变为上传"+buttonStatus)
+      this.setData({
+        buttonStatus
+      })
       console.log("取消");
       this.setData({
         showImgModal: false,
-        isUploaded:!isUploaded,
         showImgContent:true
       })
+      
     }
-    
+   
+   
 
   },
   handleImgFeedback(e){

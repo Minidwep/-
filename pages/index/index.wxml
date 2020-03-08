@@ -20,18 +20,18 @@
                             <view class="weui-dialog_text">
                                 您查询的
                             </view>
-                            <view class="weui-dialog_text">
+                            <view class="weui-dialog_text weui-text_important">
                                 {{searchInputValue}}
                             </view>
                             <view class="weui-dialog_text">
                                 是
                             </view>
-                            <view class="weui-dialog_text">
+                            <view class="weui-dialog_text weui-text_important">
                                 {{rubbishKeyResult.type ==null ? "没有查询到结果":''}}
                                 {{rubbishKeyResult.type =='0' ? '干垃圾':''}}
-                                {{rubbishKeyResult.type =='1' ? '干垃圾':''}}
-                                {{rubbishKeyResult.type =='2' ? '干垃圾':''}}
-                                {{rubbishKeyResult.type =='3' ? '干垃圾':''}}
+                                {{rubbishKeyResult.type =='1' ? '湿垃圾':''}}
+                                {{rubbishKeyResult.type =='2' ? '可回收垃圾':''}}
+                                {{rubbishKeyResult.type =='3' ? '有害垃圾':''}}
                             </view>
                             <view class="weui-dialog_text">
                                  {{rubbishKeyResult.type ==null ? "请反馈给我们吧":''}}
@@ -53,10 +53,10 @@
                 <view class="weui-dialog__wrp" bindtap="closeKeyFeedbackDialog">
                     <view class="weui-dialog" catchtap="stopEvent">
                         <view class="weui-dialog__hd">
-                            <view class="weui-dialog__title">分类结果</view>
+                            <view class="weui-dialog__title">反馈信息</view>
                         </view>
                         <view class="weui-dialog__bd">
-                            <image class="weui-article__img" src="../../img/rubbishSort_logo.png" mode="widthFix" />
+                            <!-- <image class="weui-article__img" src="../../img/rubbishSort_logo.png" mode="widthFix" /> -->
                             <view class="weui-cells weui-cells_after-title">
                                 <view class="weui-cells__title">您输入的是</view>
                                 <view class="weui-cell ">
@@ -68,12 +68,9 @@
                             <view class="weui-cells__title">选择垃圾分类信息</view>
                             <view class="weui-cells weui-cells_after-title">
                                 <radio-group bindchange="rubbishItemRadioChange">
-                                <label class="weui-cell weui-check__label" wx:for="{{rubbishListRadio}}" wx:key="value">
+                                <label class="weui-cell weui-check__label {{item.checked?'weui-cell_active':''}}" wx:for="{{rubbishListRadio}}" wx:key="value">
                                     <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
                                     <view class="weui-cell__bd">{{item.name}}</view>
-                                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-                                    <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
-                                    </view>
                                 </label>
                                 </radio-group>
                             </view>
@@ -111,7 +108,7 @@
                 <view class="feedback_text"  wx:if="{{rubbishList.length != 0}}">没有想要的答案?</view>
                 <view class="feedback_text" wx:else> 帮忙反馈一下吧! </view>
                 <view class="feedback_btn" >
-                    <view class="btn_text" bindtap="handleImgFeedback">反馈该信息</view>
+                    <view class="btn_text" bindtap="handleImgFeedback">反馈信息</view>
                     <view class="btn_bolck"></view>
                 </view>
             </view>

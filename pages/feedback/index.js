@@ -45,6 +45,8 @@ Page({
       element.value=index;
     });
     resultList.splice(4, 1);
+    resultList[0].checked = true;
+    this.data.feedParam.resultChecked =resultList[0].keyword;
     this.setData({
       resultList
     })

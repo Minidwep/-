@@ -1,1 +1,10 @@
-/* pages/rank/index.wxss */
+.text-warp {
+  display: flex;
+}
+.text-warp .text_left {
+  flex: 1;
+}
+.text-warp .text_right {
+  flex: 1;
+  text-align: right;
+}

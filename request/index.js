@@ -1,5 +1,5 @@
 let ajaxTimes=0;
-const baseUrl ="http://localhost:8080";
+const baseUrl ="http://localhost:8080/rubbishSort";
 export const request=(params)=>{
     ajaxTimes++;
     // 显示加载中
